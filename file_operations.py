@@ -4,7 +4,7 @@ from employee import Employee
 import xml.etree.ElementTree as ET
 
 
-def load_employees(xml_name: str):
+def load_employees(xml_name):
     employees = []
     root = ET.fromstring(xml_name)
     employee_elements = root.findall('employee')
@@ -28,19 +28,19 @@ def load_employees(xml_name: str):
     return employees
 
 
-def read_xml_file(path: str):
+def read_xml_file(path):
     try:
         with open(path, 'r', encoding='utf-8') as file:
             return file.read()
     except FileNotFoundError:
-        print(f"File  {path} doesnt exist.")
+        print(f"File {path} doesn't exist.")
         raise
     except IOError as err:
         print(f"Error during reading file: {err}")
         raise
 
 
-def save_json_to_file(data: dict | list, file_path: str):
+def save_json_to_file(data, file_path):
     try:
         with open(file_path, 'w', encoding='utf-8') as file:
             json.dump(data, file, indent=2)
